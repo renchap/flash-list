@@ -9,6 +9,7 @@ import {
   Pressable,
   LayoutAnimation,
   StyleSheet,
+  useWindowDimensions,
 } from "react-native";
 import { FlashList } from "@shopify/flash-list";
 
@@ -58,6 +59,8 @@ const List = () => {
     );
   };
 
+  const { width, height } = useWindowDimensions();
+
   return (
     <FlashList
       ref={list}
@@ -73,7 +76,8 @@ const List = () => {
       }}
       renderItem={renderItem}
       estimatedItemSize={100}
-      data={data}
+      estimatedListSize={{ width, height }}
+      data={[]}
     />
   );
 };
